@@ -1,0 +1,167 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <header id="header" class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-24 col-lg-6">
+                    <div class="header__logo">
+                        <a href="../index.html">
+                            <img  src="../images/Logo.svg" title="Fertigungsstraße Logo" alt="Fertigungsstraße Logo"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-24 col-lg-12">
+                    <div class="header__title">
+                        <h1>Mitarbeiter</h1>
+                    </div>
+                </div>
+                <div class="col-24 col-lg-6">
+                    <div class="header__logout">
+                        <a class="main-button" href="../index.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container lage__container">
+            <div class="row">
+                <div class="col-24 col-lg-8">
+                    <div class="lage" id="material_store">
+                        <h2 class="lage__title">
+                            Materiallager
+                        </h2>
+                        <ul class="lage__list">
+                            <li class="lage__item">
+                                <h3 class="lage__item_title saeule-1">Säule 1</h3>
+                                <p class="lage__item_txt">
+                                    <span>20</span>
+                                </p>
+                            </li>
+                            <li class="lage__item">
+                                <h3 class="lage__item_title saeule-2">Säule 2</h3>
+                                <p class="lage__item_txt">
+                                    <span>20</span>
+                                </p>
+                            </li>
+                            <li class="lage__item">
+                                <h3 class="lage__item_title saeule-3">Säule 3</h3>
+                                <p class="lage__item_txt">
+                                    <span>20</span>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-24 col-lg-8">
+                    <div class="lage" id="produktion">
+                        <h2 class="lage__title">
+                            Produktion
+                        </h2>
+                        <ul class="lage__list">
+                            <li class="lage__item">
+                                <h3 class="lage__item_title">Farbe:</h3>
+                                <p class="">
+                                    <span id="production__color">-</span>
+                                </p>
+                            </li>
+                            <li class="lage__item">
+                                <h3 class="lage__item_title">Stanzanzahl:</h3>
+                                <p class="">
+                                    <span id="production__amount">-</span>
+                                </p>
+                            </li>
+                            <li class="lage__item">
+                                <span id="production__visual" class="lage__item_indicator free"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-24 col-lg-8">
+                    <div class="lage" id="high_bay_warehouse">
+                        <h2 class="lage__title">
+                            Hochregallager
+                        </h2>
+                        <ul class="lage__list">
+                            <li class="lage__item">
+                                <h3 class="lage__item_title">Säule 1</h3>
+                                <span class="lage__item_indicator free"></span>
+                                <span class="lage__item_indicator free"></span>
+                            </li>
+                            <li class="lage__item">
+                                <h3 class="lage__item_title">Säule 2</h3>
+                                <span class="lage__item_indicator free"></span>
+                                <span class="lage__item_indicator busy"></span>
+                            </li>
+                            <li class="lage__item">
+                                <h3 class="lage__item_title">Säule 3</h3>
+                                <span class="lage__item_indicator free"></span>
+                                <span class="lage__item_indicator busy"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-24 col-lg-8">
+                    <div class="lage">
+                        <h2 class="lage__title">
+                            Lieferauftrag
+                        </h2>
+                        <form class="lage__form" id="registerFormElementEmp" action="../php/order.php"
+                              method="post">
+                            <div class="lage__form_body">
+                                <input type="hidden" name="form_id" value="registerFormElementEmp">
+                                <div class="lage__form_input">
+                                    <label class="saeule-1" for="txt_blue">Säule 1</label>
+                                    <input class="form-lage--textfield" type="text" id="txt_blue" name="material_1"
+                                           placeholder="">
+                                </div>
+                                <div class="lage__form_input">
+                                    <label class="saeule-2" for="txt_white">Säule 2</label>
+                                    <input class="form-lage--textfield" type="text" id="txt_white" name="material_2"
+                                           placeholder="">
+                                </div>
+                                <div class="lage__form_input">
+                                    <label class="saeule-3" for="txt_red">Säule 3</label>
+                                    <input class="form-lage--textfield" type="text" id="txt_red" name="material_3"
+                                           placeholder="">
+                                </div>
+                            </div>
+
+                            <button class="lage__form_button main-button" type="submit">Senden</button>
+                        </form>
+                        <div class="deco_1">
+                        </div>
+                        <div class="deco_2">
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-24 col-lg-8">
+                    <div class="lage" id="new_order">
+                        <h2 class="lage__title">
+                            Auftrag
+                        </h2>
+                        <ul class="lage__history_list">
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-24 col-lg-8">
+                    <div class="lage" id="history">
+                        <h2 class="lage__title">
+                            Historie
+                        </h2>
+                        <ul class="lage__history_list">
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+{% endblock %}
