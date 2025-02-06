@@ -6,31 +6,26 @@
             <h2 class="lage__title">
                 Lieferauftrag
             </h2>
-            <form class="lage__form" id="registerFormElement" action="/dashboard/kunde/form"
-                  method="post">
-                <div class="lage__form_body">
-                    <input type="hidden" name="form_id" value="registerFormElement">
-                    <div class="lage__form_input">
-                        <label class="saeule-1" for="txt_1">Säule 1</label>
-                        <input class="form-lage--textfield" type="text" id="txt_1" name="material_1"
-                               placeholder="">
-                    </div>
-                    <div class="lage__form_input">
-                        <label class="saeule-2" for="txt_2">Säule 2</label>
-                        <input class="form-lage--textfield" type="text" id="txt_2" name="material_2" placeholder="">
-                    </div>
-                    <div class="lage__form_input">
-                        <label class="saeule-3" for="txt_3">Säule 3</label>
-                        <input class="form-lage--textfield" type="text" id="txt_3" name="material_3" placeholder="">
-                    </div>
+            {{ form_start(form, {'attr': {'class': 'lage__form', 'id': 'registerFormElement'}}) }}
+            <div class="lage__form_body">
+                <div class="lage__form_input">
+                    <label class="saeule_1">{{ form_label(form.material_1) }}</label>
+                    {{ form_widget(form.material_1) }}
                 </div>
-
-                <button class="lage__form_button main-button" type="submit">Senden</button>
-            </form>
-            <div class="deco_1">
+                <div class="lage__form_input">
+                    <label class="saeule_1">{{ form_label(form.material_2) }}</label>
+                    {{ form_widget(form.material_2) }}
+                </div>
+                <div class="lage__form_input">
+                    <label class="saeule_1">{{ form_label(form.material_3) }}</label>
+                    {{ form_widget(form.material_3) }}
+                </div>
             </div>
-            <div class="deco_2">
-
-            </div>
-    </div
+            {{ form_end(form) }}
+            <div class="deco_1"></div>
+            <div class="deco_2"></div>
+        </div>
+    </div>
 {% endblock %}
+
+

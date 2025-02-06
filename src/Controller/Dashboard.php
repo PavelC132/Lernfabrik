@@ -2,12 +2,24 @@
 
 namespace App\Controller;
 
+use App\Form\KundeType;
+use App\Repository\AuftragRepository;
+use App\Repository\HochregallagerRepository;
+use App\Repository\MateriallagerRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 class Dashboard extends AbstractController
 {
+    public function __construct(
+        private readonly MateriallagerRepository $mr,
+        private readonly HochregallagerRepository $hr,
+        private readonly MateriallagerRepository $mt,
+        private readonly AuftragRepository $ar,
+    ) {
+
+    }
     #[Route('/dashboard', name: 'dashboard')]
     public function dashboard(): Response
     {
@@ -15,9 +27,18 @@ class Dashboard extends AbstractController
     }
 
     #[Route('/dashboard/kunde', name: 'kunde')]
-    public function dashboardKunde(): Response
+    public function dashboardKunde(Request $request): Response
     {
-        return $this->render('kunde/kunde.html.twig');
+        $form = $this->createForm(KundeType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+
+        }
+        return $this->render('kunde/kunde.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     #[Route('/dashboard/kunde/form', name: 'dashboardKundeForm', methods: ['POST'])]
