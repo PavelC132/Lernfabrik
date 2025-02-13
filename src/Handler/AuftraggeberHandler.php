@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Service;
+namespace App\Handler;
 
 use App\Entity\Auftraggeber;
 use App\Entity\AuftragsArten;
 use App\Repository\AuftraggeberRepository;
+use App\Service\Auftrag;
 use Doctrine\ORM\EntityManagerInterface;
 
-class AuftraggeberService
+class AuftraggeberHandler
 {
     private EntityManagerInterface $entityManager;
     private AuftraggeberRepository $auftraggeberRepository;
