@@ -8,7 +8,7 @@ use App\Enum\PiConfig;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 
-class WebSockerHandler
+class WebSocketHandler
 {
     private HttpClientInterface $httpClient;
     private Connector $connector;
