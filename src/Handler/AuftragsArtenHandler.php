@@ -4,12 +4,13 @@ namespace App\Handler;
 
 use App\Contracts\IHandler;
 use App\Entity\Auftrag;
-use App\Repository\AuftragRepository;
+use App\Repository\AuftragsArtenRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
-readonly class AuftragHandler implements IHandler
+class AuftragsArtenHandler implements IHandler
 {
-    public function __construct(private AuftragRepository $repository,
+
+    public function __construct(private AuftragsArtenRepository $repository,
                                 private EntityManagerInterface $entityManager)
     {
 
@@ -42,15 +43,5 @@ readonly class AuftragHandler implements IHandler
     {
         $this->entityManager->remove($auftrag);
         $this->entityManager->flush();
-    }
-
-    public function findByStatus(int $status): array
-    {
-        return $this->auftragRepository->findBy(['Status' => $status]);
-    }
-
-    public function findByAuftraggeber(Auftraggeber $auftraggeber): array
-    {
-        return $this->auftragRepository->findBy(['auftraggeber' => $auftraggeber]);
     }
 }
