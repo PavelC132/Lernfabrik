@@ -34,8 +34,14 @@ class Dashboard extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-
+            /**
+                Extrahiere Formdaten und erstelle daraus einen Auftrag, generiere dabei ein neuen kunden und gib dem Zufällig einen namen.
+                Der bearbeitungsprozess wird gestartet, wenn alle websockets vorhanden sind und deren status auf online und bereit sind.
+             *
+             */
+            dump($data); die();
         }
+
         return $this->render('kunde/kunde.html.twig', [
             'form' => $form->createView(),
         ]);
