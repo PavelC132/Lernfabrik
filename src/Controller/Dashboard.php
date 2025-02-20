@@ -2,7 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Auftrag;
 use App\Form\KundeType;
+use App\Handler\AuftragHandler;
+use App\Handler\BestellungHandler;
+use App\Handler\MateriallagerHandler;
 use App\Repository\AuftragRepository;
 use App\Repository\HochregallagerRepository;
 use App\Repository\MateriallagerRepository;
@@ -13,10 +17,9 @@ use Symfony\Component\Routing\Attribute\Route;
 class Dashboard extends AbstractController
 {
     public function __construct(
-        private readonly MateriallagerRepository $mr,
-        private readonly HochregallagerRepository $hr,
-        private readonly MateriallagerRepository $mt,
-        private readonly AuftragRepository $ar,
+        private readonly AuftragHandler $auftragHandler,
+        private readonly BestellungHandler $bestellungHandler,
+        private readonly MateriallagerHandler $materiallagerHandler,
     ) {
 
     }
@@ -39,7 +42,7 @@ class Dashboard extends AbstractController
                 Der bearbeitungsprozess wird gestartet, wenn alle websockets vorhanden sind und deren status auf online und bereit sind.
              *
              */
-            dump($data); die();
+            $this->bestellungHandler->generiereBestellung($data);
         }
 
         return $this->render('kunde/kunde.html.twig', [
@@ -61,6 +64,11 @@ class Dashboard extends AbstractController
     #[Route('/dashboard/mitarbeiter', name: 'mitarbeiter', methods: ['GET'])]
     public function dashboardMitarbeiter(Request $request): Response
     {
-        return $this->render('mitarbeiter/mitarbeiter.html.twig');
+        $materiallager = $this->materiallagerHandler->getAll();
+
+        dump($materiallager); die();
+        return $this->render('mitarbeiter/mitarbeiter.html.twig', [
+            'materiallager' => $materiallager,
+        ]);
     }
 }

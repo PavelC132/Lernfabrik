@@ -29,6 +29,9 @@ class AuftragsPosition
     #[ORM\Column(type: Types::SMALLINT)]
     private ?int $Status = null;
 
+    #{ORM\Column(type: Types::SMALLINT)]
+    private ?int $Menge = null;
+
     public function __construct()
     {
         $this->ZuAbgaenge = new ArrayCollection();
@@ -92,4 +95,15 @@ class AuftragsPosition
 
         return $this;
     }
+
+    public function getMenge(): ?int
+    {
+        return $this->Menge;
+    }
+
+    public function setMenge(?int $Menge): void
+    {
+        $this->Menge = $Menge;
+    }
+
 }
